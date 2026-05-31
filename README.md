@@ -17,6 +17,9 @@ A very simple YouTube to MP3 - MP4 - FLAC installer using yt_dlp and a beautiful
 - YouTube -> MP4
 - YouTube -> FLAC
 
+- Enter resolution for MP4
+- Enter bitrate for MP3
+
 ---
 
 ## Usage
