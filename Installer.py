@@ -26,11 +26,15 @@ from yt_dlp import YoutubeDL
 import time
 import os
 
-print("-----------------------------------------------------")
-print("-                                                   -")
-print("-                 DionYTInstaller                   -")
-print("-                                                   -")
-print("-----------------------------------------------------")
+print(" _______  __                   ______                     __              __ __")
+print("|       \|  \                 |      \                   |  \            |  \  \    ")              
+print("| ▓▓▓▓▓▓▓\\▓▓ ______  _______  \▓▓▓▓▓▓_______   _______ _| ▓▓_    ______ | ▓▓ ▓▓ ______   ______  ")
+print("| ▓▓  | ▓▓  \/      \|       \  | ▓▓ |       \ /       \   ▓▓ \  |      \| ▓▓ ▓▓/      \ /      \ ")
+print("| ▓▓  | ▓▓ ▓▓  ▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\ | ▓▓ | ▓▓▓▓▓▓▓\  ▓▓▓▓▓▓▓\▓▓▓▓▓▓   \▓▓▓▓▓▓\ ▓▓ ▓▓  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ")
+print("| ▓▓  | ▓▓ ▓▓ ▓▓  | ▓▓ ▓▓  | ▓▓ | ▓▓ | ▓▓  | ▓▓\▓▓    \  | ▓▓ __ /      ▓▓ ▓▓ ▓▓ ▓▓    ▓▓ ▓▓   \▓▓")
+print("| ▓▓__/ ▓▓ ▓▓ ▓▓__/ ▓▓ ▓▓  | ▓▓_| ▓▓_| ▓▓  | ▓▓_\▓▓▓▓▓▓\ | ▓▓|  \  ▓▓▓▓▓▓▓ ▓▓ ▓▓ ▓▓▓▓▓▓▓▓ ▓▓      ")
+print("| ▓▓    ▓▓ ▓▓\▓▓    ▓▓ ▓▓  | ▓▓   ▓▓ \ ▓▓  | ▓▓       ▓▓  \▓▓  ▓▓\▓▓    ▓▓ ▓▓ ▓▓\▓▓     \ ▓▓      ")
+print("\ ▓▓▓▓▓▓▓ \▓▓ \▓▓▓▓▓▓ \▓▓   \▓▓\▓▓▓▓▓▓\▓▓   \▓▓\▓▓▓▓▓▓▓    \▓▓▓▓  \▓▓▓▓▓▓▓\▓▓\▓▓ \▓▓▓▓▓▓▓\▓▓      ")
 
 time.sleep(2)
 
@@ -57,12 +61,13 @@ if setup == "1":
                 break
             else:
                 print("\nYou can't put more than 320 kbps try again.")
+        
         except ValueError:
             print("\nPlease enter a numbers not letters.")
     
     ydl_opts = {"format": "bestaudio/best","postprocessors": 
-        [{"key": "FFmpegExtractAudio","preferredcodec": 
-          "mp3","preferredquality": BitRate,}],}
+              [{"key": "FFmpegExtractAudio","preferredcodec": 
+                "mp3","preferredquality": BitRate,}],}
 
     with YoutubeDL(ydl_opts) as ydl: 
         try:
@@ -119,7 +124,8 @@ elif setup == "3":
         EnterURL3 = input("You typed nothing try again here: ")
     
     ydl_opts = {"format": "bestaudio/best","postprocessors": 
-        [{"key": "FFmpegExtractAudio","preferredcodec": "flac"}],}
+              [{"key": "FFmpegExtractAudio","preferredcodec": 
+                "flac"}],}
     
     with YoutubeDL(ydl_opts) as ydl: 
         try:
