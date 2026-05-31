@@ -1,8 +1,30 @@
+"""
+MIT License
+
+Copyright (c) 2026 Dion2k
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 from yt_dlp import YoutubeDL
-import json
-import yt_dlp
 import time
-import string
+import os
 
 print("-----------------------------------------------------")
 print("-                                                   -")
@@ -10,7 +32,7 @@ print("-                 DionYTInstaller                   -")
 print("-                                                   -")
 print("-----------------------------------------------------")
 
-time.sleep (2)
+time.sleep(2)
 
 print("\nPress 1 for installing MP3")
 print("Press 2 for installing MP4")
@@ -20,7 +42,11 @@ setup = input("\nEnter What you want to install: ")
 
 if setup == "1":
     EnterURL = input("Enter your URL for MP3: ")
-
+    
+    setpath = input("Enter a path or save to folder: ")
+    if setpath:
+        os.makedirs(setpath, exist_ok=True)
+    
     while (len(EnterURL.strip()) == 0):
         EnterURL = input("You typed nothing try again here: ")
 
@@ -51,12 +77,26 @@ if setup == "1":
 elif setup == "2":
     EnterURL2 = input("Enter your URL for MP4: ")
     
+    setpath = input("Enter a path or save to folder: ")
+    if setpath:
+        os.makedirs(setpath, exist_ok=True)
+
     while (len(EnterURL2.strip()) == 0):
         EnterURL2 = input("You typed nothing try again here: ")
 
-    ydl_opts = {"format": "bestvideo[ext=mp4]+bestaudio[ext=mp4]/mp4+best[height<=480]",
+    while True:
+        try:
+            width = int(input("Enter your desired width e.g 1920: "))
+            height = int(input("Enter your desired height e.g 1080: "))
+            break
+
+        except ValueError:
+            print("\nPlease enter a numbers not letters.")
+
+    ydl_opts = {"format": f"bestvideo[width<={width}][height<={height}]+bestaudio/best[width<={width}][height<={height}]",
                 "outtmpl": "%(title)s.%(ext)s",
-                "quiet": False,}
+                "quiet": False,
+                "merge_output_format": "mp4",}
     
     with YoutubeDL(ydl_opts) as ydl: 
         try:
@@ -71,6 +111,10 @@ elif setup == "2":
 elif setup == "3":
     EnterURL3 = input("Enter your URL for FLAC: ")
     
+    setpath = input("Enter a path or save to folder: ")
+    if setpath:
+        os.makedirs(setpath, exist_ok=True)
+
     while (len(EnterURL3.strip()) == 0):
         EnterURL3 = input("You typed nothing try again here: ")
     
